@@ -54,8 +54,7 @@ def download(request, name):
 
 def GetImg(request):
     if request.method == "GET":
-        path = open("kitob.pdf", 'r')
-        return render(request, 'getbook.html', {"title":"soz.txt", "kitob":path})
+        return render(request, 'getbook.html')
     else:
         book = request.POST['kitob']
         # print(book)
