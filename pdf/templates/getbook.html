@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitob yuklash</title>
+</head>
+<body>
+    <form method="post">{% csrf_token %}
+        <input type="text" name="kitob" placeholder="kitob nomini yoznig...">
+        <button type="submit">Qidirish</button>
+    </form>
+
+    <h1>Kitob nomi: {{title}}</h1>
+    <h2>KItob type: {{type}}</h2>
+    <h2>Kitob olchami: {{siz}}</h2>
+    
+
+<!-- src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://infolab.stanford.edu/pub/papers/google.pdf#toolbar=0&scrollbar=0" -->
+    <!-- <iframe
+        src="https://drive.google.com/viewerng/viewer?embedded=true&url={{kitob}}#toolbar=0&scrollbar=0"
+        frameBorder="0"
+        scrolling="auto"
+        height="750px"
+        width="800px"
+></iframe> -->
+
+<ol>
+    {% for i in list %}
+        {% if i.Title %}
+        <li>
+            <a href="{% url 'show' i.Link i.ID %}">{{i.Title}}</a>
+        </li>
+        {% endif %}
+    {% endfor %}
+</ol>
+</body>
+</html>
